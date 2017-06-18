@@ -1,4 +1,3 @@
-
 #include <functional>
 #include <iostream>
 #include <iterator>
@@ -6,11 +5,11 @@
 #include <thread>
 #include <vector>
 
+#include "log.hpp"
 #include "musicplayer.hpp"
 #include "sdlplayer.hpp"
-#include "log.hpp"
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
     const std::vector<std::string> arguments{argv, argv + argc};
 
     SDLPlayer sdl;
@@ -31,7 +30,6 @@ int main(int argc, char *argv[]) {
         {"quit", [&running]() { running = false; }},
         {"start", [&player, &file]() { player.play(file); }}
     };
-
     // clang-format on
 
     std::cout << "enter command " << std::endl;

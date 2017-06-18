@@ -9,9 +9,9 @@
 
 class PlayerInterface;
 struct MusicPlayer {
-   public:
+public:
     enum Commands { Initialize = 0, Play, Stop };
-    typedef std::deque<std::pair<Commands, std::string> > DequeType;
+    typedef std::deque<std::pair<Commands, std::string>> DequeType;
 
     MusicPlayer(PlayerInterface& player);
     ~MusicPlayer();
@@ -19,7 +19,7 @@ struct MusicPlayer {
     void play(const std::string& song);
     void play(const std::vector<std::string>& songs);
 
-   private:
+private:
     PlayerInterface& _player;
     bool _running;
     std::thread _musicThread;

@@ -34,8 +34,7 @@ void playback_thread(const bool& running, PlayerInterface& player,
 }
 
 MusicPlayer::MusicPlayer(PlayerInterface& player)
-    : _player(player),
-      _running(true),
+    : _player(player), _running(true),
       _musicThread(playback_thread, std::cref(_running), std::ref(_player),
                    std::ref(_commandsQueue)) {
     _commandsQueue.push_back(std::make_pair(Commands::Initialize, ""));
@@ -46,7 +45,8 @@ MusicPlayer::~MusicPlayer() {
 
     _commandsQueue.push_back(std::make_pair(Commands::Stop, ""));
 
-    if (_musicThread.joinable()) _musicThread.join();
+    if (_musicThread.joinable())
+        _musicThread.join();
 }
 
 void MusicPlayer::play(const std::string& song) {
